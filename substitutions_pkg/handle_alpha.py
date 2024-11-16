@@ -1,12 +1,27 @@
 import random   # https://docs.python.org/3/library/random.html
-from sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
+from sub_dicts import words_subs_dict, alpha_subs_dict, allowed_symbols, commonly_prohibited_chars
 
-'''
-The first input from the user that will be used to create the base password will be a few words or a phrase. If the phrase is close to a sentence, the program will attempt to reduce the characters with simple replacements (e.g. 4 = for, u = you, etc) or take the first letter of each word to create an acronym or an initialism.
-'''
+
+def get_alpha():
+    alpha_input = ""
+    while alpha_input == "":
+        print("Let's start with the alphabetical component.")
+        print("Don't worry about adding symbols (or numbers), I can do that for you. Though, if there's a symbol you want to make sure are part of the alphabetical component feel free to include and I'll try to preserve them. You will have a chance to add numbers momentarily.")
+        alpha_input = input("Give me a couple of words that we can use for your password: ")
+        _list = alpha_input.split()
+        if validate_words(_list) == 0:
+            print("Let's try again!")
+            continue
+        if validate_words(_list) == 1:
+            print("Looks good. Let me give you a few options to choose from for the alphabetical component.")
+            alpha_list = alpha_input.split()
+            print("alpha_list", alpha_list)
+            return alpha_list
+            
+
+
 
 def validate_words(_list):
-    print(_list)
     # if user input fails validation return 0, else 1
     # if only one word and less than 5 characters
     if len(_list) == 1 and len(_list[0]) < 5:
@@ -28,8 +43,8 @@ def validate_words(_list):
     else:
         return 1
 
+
 def handle_words(_list):
-    print(_list)
     for i in _list:
         # if already a symbol skip
         if i in allowed_symbols or i in allowed_symbols:
@@ -49,18 +64,17 @@ def handle_words(_list):
             idx = _list.index(i)
             _list[idx] = i = new_word
             continue
-    print("_list", _list)
     return _list
         
         
 
 
 ##########     DRIVER CODE     ##########
-test_1 = ["brush", "teeth"]
-test_2 = ["Bert", "Ernie"]
-test_3 = ["travel", "to", "France"]
-test_4 = ["win", "a", "million"]
-test_5 = ["you're", "awesome"]
+# test_1 = ["brush", "teeth"]
+# test_2 = ["Bert", "Ernie"]
+# test_3 = ["travel", "to", "France"]
+# test_4 = ["win", "a", "million"]
+# test_5 = ["you're", "awesome"]
 
 # handle_words(test_1)
 # handle_words(test_2)
@@ -68,12 +82,14 @@ test_5 = ["you're", "awesome"]
 # handle_words(test_4)
 # handle_words(test_5)
 
-test_6 = ["abc"]
-test_7 = ["a", "b", "c", "d", "e", "f"]
-test_8 = ["test", "r~m[]ve"]
+# test_6 = ["abc"]
+# test_7 = ["a", "b", "c", "d", "e", "f"]
+# test_8 = ["test", "r~m[]ve"]
 
 # validate_words(test_4)
 # validate_words(test_5)
 # validate_words(test_6)
 # validate_words(test_7)
 # validate_words(test_8)
+
+get_alpha()
