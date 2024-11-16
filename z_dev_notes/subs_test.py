@@ -4,14 +4,14 @@ These characters are broadly accepted across systems and can help create strong,
 1. **Uppercase Letters**: A-Z
 2. **Lowercase Letters**: a-z
 3. **Digits**: 0-9
-4. **Symbols**: ! @ # $ % ^ & * _ - + = ? , . ; : 
+4. **Symbols**: ! @ # $ % ^ & * _ - + = ? , . ; : ( )
 ---
 ### Sometimes Allowed Characters
 These characters may be allowed in some systems but are frequently restricted in others:
-1. **Special Mathematical Symbols**: ~ \
+1. **Special Mathematical Symbols**: ~ \\
 2. **Extended Symbols**: > < [ ]
 Occasionally allowed for added complexity, though they might not work on all keyboards.
-3. **Extended Punctuation or Typographic Characters**: — – 
+3. **Extended Punctuation or Typographic Characters**: — (em dash) – (en dash)
 Also non-standard characters (such as Unicode or emoji characters)./
 ---
 ### Commonly Prohibited Characters
@@ -27,51 +27,74 @@ These characters are frequently prohibited due to parsing, encoding, or security
 
 '''
 
+commonly_prohibited_chars = ["\\", "|", "/", "—", "–", "~", "<", ">", "{", "}", "[", "]", "'", '"', "`"]
+
+allowed_symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "?", ",", ".", ";", ":", "(", ")"]
 
 alpha_subs_dict = {
     "a": ["A", "4", "@", "^"],
     "b": ["B", "8", "13", "3"],
-    "c": ["C", "(", "<", "{"],
-    "d": ["D", "|)", "I>", "[)"],
+    "c": ["C", "("],
+    "d": ["D", "!)", "*!", ".!"],
     "e": ["E", "3", "&"],
-    "f": ["F", "|=", "ph"],
+    "f": ["F", "!=", "ph"],
     "g": ["G", "6", "9", "&"],
-    "h": ["H", "#", "]-[", "|-|", "}{",],
-    "i": ["I", "1", "!", "|", "]"],
-    "j": ["J", "_|", ";", "]"],
-    "k": ["K", "|<", "|{", "X"],
-    "l": ["L", "1", "|", "7"],
-    "m": ["M", "|v|", "[V]", "^^"],
-    "n": ["N", "|||"],
+    "h": ["H", "#", "!-!", ")-("],
+    "i": ["I", "1", "!"],
+    "j": ["J", ";"],
+    "k": ["K", "!(", "!;", "X"],
+    "l": ["L", "1", "!", "7", "("],
+    "m": ["M", "!v!", ")V(", "^^"],
+    "n": ["N", "!V", ")V"],
     "o": ["O", "0", "()", "*"],
-    "p": ["P", "|*", "|o", "|>"],
+    "p": ["P", "!*", "!o", ")*", ")o"],
     "q": ["Q", "9", "0_", "0,", "(,)"],
-    "r": ["R", "12", "|2", "I2"],
+    "r": ["R", "12", "!2", "I2", ")2"],
     "s": ["S", "5", "$", "z"],
     "t": ["T", "7", "+"],
-    "u": ["U", "v", "|_|"],
-    "v": ["V", "u", "||"],
+    "u": ["U", "v", "!_!"],
+    "v": ["V", "u", ")("],
     "w": ["W", "vv"],
-    "x": ["X", "*", "><", "}{"],
-    "y": ["Y", "`/", "'/", "4"],
-    "z": ["Z", "2", "7_", ">"]
+    "x": ["X", "*", ")("],
+    "y": ["Y", "-;", "-(", "4"],
+    "z": ["Z", "2", "7_"]
 }
 
-
-
-
 numeric_subs_dict = {
-    "0": ["O", "()", "o", "[]"],
-    "1": ["I", "|", "!"],
-    "2": ["Z", "z", "&"],
-    "3": ["E", "e", "]",],
-    "4": ["A", "a", "^","|>"],
+    "0": ["O", "o", "()", "*", "@"],
+    "1": ["I", "!", ".", "(", ")"],
+    "2": ["Z", "z", ":", "&"],
+    "3": ["E", "e", ":.", "&"],
+    "4": ["A", "a", "y", "::", "^^"],
     "5": ["S", "s", "$"],
     "6": ["G", "b"],
-    "7": ["T", "-|", "+", "?"],
+    "7": ["T", "-!", "-(" "?"],
     "8": ["B", "&"],
     "9": ["g", "q"]
 }
 
+def iterate_through(_dict):
+    for k, v in _dict.items():
+        print(f"key: {k}")
+        for i in v:
+            print(f"key: {k}, value: {i}")
 
-symbols = []
+# iterate_through(alpha_subs_dict)
+
+def check_for_bad_chars(_dict, bad_chars=commonly_prohibited_chars):
+    for k, v in _dict.items():
+        # print(f"Checking: {k}")
+        issue = 0
+        for l in v:                 # iterate through list
+            for i in l:             # iterate through string
+                if i in bad_chars:
+                    print(f"key: {k}, may pose an issue with symbol: {i} in {l}")
+                    issue += 1
+                    continue
+        if issue == 0:
+            print(f"key: {k} looks good!")
+        else:
+            issue = 0
+
+# check_for_bad_chars(alpha_subs_dict)
+# check_for_bad_chars(numeric_subs_dict)
