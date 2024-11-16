@@ -1,6 +1,22 @@
 import random   # https://docs.python.org/3/library/random.html
 import re
-from sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
+from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, allowed_symbols, commonly_prohibited_chars
+
+
+def get_numbers():
+    numbers_input = ""
+    while numbers_input == "":
+        print("Next, we'll get the numerical component.")
+        numbers_input = input("Give me a a few numbers (2-5 digits in total) that we can use for your password: ")
+        _list = numbers_input.split()
+        if validate_numbers(_list) == 0:
+            print("Let's try again!")
+            continue
+        if validate_numbers(_list) == 1:
+            print("Looks good. Let me give you a few options to choose from for the alphabetical component.")
+            nums_list = validate_numbers.split()
+            print("alpha_list", nums_list)
+            return nums_list
 
 
 def validate_numbers(_list):
@@ -29,6 +45,7 @@ def validate_numbers(_list):
      else:
           return 1
 
+
 def handle_numbers(_list):
      pass
 
@@ -53,3 +70,11 @@ def handle_numbers(_list):
 # test_7 = ["1234", "UnitB"]
 # validate_numbers(test_6)
 # validate_numbers(test_7)
+
+
+# if __name__ == "__main__":
+#     # This block runs only when the module is executed directly, not when imported
+#     print("handle_numeric.py is running directly.")
+#     get_numbers = get_numbers()
+#     validate_numbers = validate_numbers()
+#     handle_numbers = handle_numbers()

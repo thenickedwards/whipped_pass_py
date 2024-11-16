@@ -1,11 +1,12 @@
 import random   # https://docs.python.org/3/library/random.html
-from sub_dicts import words_subs_dict, alpha_subs_dict, allowed_symbols, commonly_prohibited_chars
+# from sub_dicts import words_subs_dict, alpha_subs_dict, allowed_symbols, commonly_prohibited_chars
+from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, allowed_symbols, commonly_prohibited_chars
 
 
 def get_alpha():
     alpha_input = ""
     while alpha_input == "":
-        print("Let's start with the alphabetical component.")
+        print("We'll start with the alphabetical component.")
         print("Don't worry about adding symbols (or numbers), I can do that for you. Though, if there's a symbol you want to make sure are part of the alphabetical component feel free to include and I'll try to preserve them. You will have a chance to add numbers momentarily.")
         alpha_input = input("Give me a couple of words that we can use for your password: ")
         _list = alpha_input.split()
@@ -93,3 +94,13 @@ def handle_words(_list):
 # validate_words(test_8)
 
 get_alpha()
+
+
+
+
+# if __name__ == "__main__":
+#     # This block runs only when the module is executed directly, not when imported
+#     print("handle_alpha.py is running directly.")
+#     get_alpha = get_alpha()
+#     validate_words = validate_words()
+#     handle_words = handle_words()

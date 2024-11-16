@@ -1,9 +1,9 @@
 from menus import welcome_menu
-# import tutorial
-from substitutions_pkg.handle_alpha import get_alpha 
-
 welcome_menu()
+# import tutorial
+from substitutions_pkg.handle_alpha import get_alpha as alpha_component
+from substitutions_pkg.handle_numeric import get_numbers as numberic_component
 
-alpha_input = get_alpha()
 
-print("meanwhile back at main.py", alpha_input)
+
+print("meanwhile back at main.py 💫")
