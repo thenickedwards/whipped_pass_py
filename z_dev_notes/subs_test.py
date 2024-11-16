@@ -27,9 +27,9 @@ These characters are frequently prohibited due to parsing, encoding, or security
 
 '''
 
-commonly_prohibited_chars = ["\\", "|", "/", "—", "–", "~", "<", ">", "{", "}", "[", "]", "'", '"', "`"]
-
 allowed_symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "?", ",", ".", ";", ":", "(", ")"]
+
+commonly_prohibited_chars = ["\\", "|", "/", "—", "–", "~", "<", ">", "{", "}", "[", "]", "'", '"', "`"]
 
 alpha_subs_dict = {
     "a": ["A", "4", "@", "^"],
@@ -73,6 +73,42 @@ numeric_subs_dict = {
     "9": ["g", "q"]
 }
 
+words_subs_dict = {
+    "you": ["u"],
+    "your": ["ur"],
+    "are": ["r"],
+    "why": ["y"],
+    "see": ["c"],
+    "be": ["b"],
+    "okay": ["ok"],
+    "for": ["4"],
+    "to": ["2"],
+    "too": ["2"],
+    "ate": ["8"],
+    "one": ["1"],
+    "and": ["&", "n"],
+    "at": ["@"],
+    "oh": ["o"],
+    "ex": ["x"],
+    "thanks": ["thx", "tnx"],
+    "please": ["pls", "plz"],
+    "because": ["cuz", "bc"],
+    "before": ["b4"],
+    "people": ["ppl"],
+    "later": ["l8r"],
+    "with": ["w!"],
+    "without": ["w!o"],
+    "great": ["gr8"],
+    "laugh out loud": ["lol"],
+    "by the way": ["btw"],
+    "see you": ["cu"],
+    "talk to you later": ["ttyl"],
+    "got to go": ["gtg"],
+    "what's up": ["wazzup", "sup"]
+}
+
+
+
 def iterate_through(_dict):
     for k, v in _dict.items():
         print(f"key: {k}")
@@ -88,13 +124,14 @@ def check_for_bad_chars(_dict, bad_chars=commonly_prohibited_chars):
         for l in v:                 # iterate through list
             for i in l:             # iterate through string
                 if i in bad_chars:
-                    print(f"key: {k}, may pose an issue with symbol: {i} in {l}")
+                    print(f"❌ key: {k}, may pose an issue with symbol: {i} in {l}")
                     issue += 1
                     continue
         if issue == 0:
-            print(f"key: {k} looks good!")
+            print(f"✅ key: {k} looks good!")
         else:
             issue = 0
 
 # check_for_bad_chars(alpha_subs_dict)
 # check_for_bad_chars(numeric_subs_dict)
+check_for_bad_chars(words_subs_dict)
