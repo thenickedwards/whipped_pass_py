@@ -1,6 +1,7 @@
 import random   # https://docs.python.org/3/library/random.html
 import time
-from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
+from sub_dicts import  words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
+# from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
 
 
 def get_alpha():
@@ -45,6 +46,7 @@ def validate_words(_list):
 
 
 def handle_words(_list):
+    print("_list", _list)
     for i in _list:
         # commmon word replacements
         if i in words_subs_dict:
@@ -67,23 +69,24 @@ def handle_words(_list):
             idx = _list.index(i)
             _list[idx] = i = new_word
             continue
+    print("_list", _list)
     return _list
         
         
 
 
 ##########     DRIVER CODE     ##########
-# test_1 = ["brush", "teeth"]
-# test_2 = ["Bert", "Ernie"]
-# test_3 = ["travel", "to", "France"]
-# test_4 = ["win", "a", "million"]
-# test_5 = ["you're", "awesome"]
+test_1 = ["brush", "teeth"]
+test_2 = ["Bert", "Ernie"]
+test_3 = ["travel", "to", "France"]
+test_4 = ["win", "a", "million"]
+test_5 = ["you're", "awesome"]
 
-# handle_words(test_1)
-# handle_words(test_2)
-# handle_words(test_3)
-# handle_words(test_4)
-# handle_words(test_5)
+handle_words(test_1)
+handle_words(test_2)
+handle_words(test_3)
+handle_words(test_4)
+handle_words(test_5)
 
 # test_6 = ["abc"]
 # test_7 = ["a", "b", "c", "d", "e", "f"]
