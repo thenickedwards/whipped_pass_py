@@ -1,6 +1,6 @@
 import random   # https://docs.python.org/3/library/random.html
-# from sub_dicts import words_subs_dict, alpha_subs_dict, allowed_symbols, commonly_prohibited_chars
-from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, allowed_symbols, commonly_prohibited_chars
+import time
+from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
 
 
 def get_alpha():
@@ -12,14 +12,13 @@ def get_alpha():
         _list = alpha_input.split()
         if validate_words(_list) == 0:
             print("Let's try again!")
+            alpha_input == ""
             continue
         if validate_words(_list) == 1:
             print("Looks good. Let me give you a few options to choose from for the alphabetical component.")
             alpha_list = alpha_input.split()
             print("alpha_list", alpha_list)
             return alpha_list
-            
-
 
 
 def validate_words(_list):
@@ -47,18 +46,21 @@ def validate_words(_list):
 
 def handle_words(_list):
     for i in _list:
-        # if already a symbol skip
-        if i in allowed_symbols or i in allowed_symbols:
-            continue
         # commmon word replacements
         if i in words_subs_dict:
             idx = _list.index(i)
             _list[idx] = random.choice(words_subs_dict[i])
             continue
+        # if already a symbol skip
+        if i in allowed_symbols or i in numeric_subs_dict:
+            continue
         # randomize a 1-3 replacements in each word
         subs = random.randint(1, 3)
         for s in range(1, subs):
             letter_to_replace = random.choice(i)
+            # if already a symbol skip
+            if letter_to_replace in allowed_symbols or letter_to_replace in numeric_subs_dict:
+                continue
             key = letter_to_replace.lower()
             possible_replacement = random.choice(alpha_subs_dict[key])
             new_word = i.replace(letter_to_replace, possible_replacement)
@@ -93,14 +95,8 @@ def handle_words(_list):
 # validate_words(test_7)
 # validate_words(test_8)
 
-get_alpha()
+# get_alpha()
 
 
 
 
-# if __name__ == "__main__":
-#     # This block runs only when the module is executed directly, not when imported
-#     print("handle_alpha.py is running directly.")
-#     get_alpha = get_alpha()
-#     validate_words = validate_words()
-#     handle_words = handle_words()

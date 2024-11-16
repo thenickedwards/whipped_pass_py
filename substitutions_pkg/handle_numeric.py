@@ -7,15 +7,17 @@ def get_numbers():
     numbers_input = ""
     while numbers_input == "":
         print("Next, we'll get the numerical component.")
+        print("I'm getting some work done to enhance this feature but for now simply enter the numbers (no symbols) separated by a space.")
         numbers_input = input("Give me a a few numbers (2-5 digits in total) that we can use for your password: ")
         _list = numbers_input.split()
         if validate_numbers(_list) == 0:
             print("Let's try again!")
+            numbers_input =""
             continue
         if validate_numbers(_list) == 1:
-            print("Looks good. Let me give you a few options to choose from for the alphabetical component.")
-            nums_list = validate_numbers.split()
-            print("alpha_list", nums_list)
+            print("Looks good. Let me see what I can do with these.")
+            nums_list = numbers_input.split()
+            print("nums_list", nums_list)
             return nums_list
 
 
@@ -72,9 +74,3 @@ def handle_numbers(_list):
 # validate_numbers(test_7)
 
 
-# if __name__ == "__main__":
-#     # This block runs only when the module is executed directly, not when imported
-#     print("handle_numeric.py is running directly.")
-#     get_numbers = get_numbers()
-#     validate_numbers = validate_numbers()
-#     handle_numbers = handle_numbers()
