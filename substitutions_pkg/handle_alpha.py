@@ -1,7 +1,8 @@
 import random   # https://docs.python.org/3/library/random.html
 import time
-from sub_dicts import  words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
-# from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
+from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
+# for direct testing: 
+# from sub_dicts import  words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
 
 
 def get_alpha():
@@ -71,22 +72,31 @@ def handle_words(_list):
             continue
     print("_list", _list)
     return _list
+
+
+def alpha_options(_list):
+    options = [handle_words(_list) for i in range(4)]
+    print("options", options)
+    return options
+    
+    
         
         
+
 
 
 ##########     DRIVER CODE     ##########
-test_1 = ["brush", "teeth"]
-test_2 = ["Bert", "Ernie"]
-test_3 = ["travel", "to", "France"]
-test_4 = ["win", "a", "million"]
-test_5 = ["you're", "awesome"]
+# test_1 = ["brush", "teeth"]
+# test_2 = ["Bert", "Ernie"]
+# test_3 = ["travel", "to", "France"]
+# test_4 = ["win", "a", "million"]
+# test_5 = ["you're", "awesome"]
 
-handle_words(test_1)
-handle_words(test_2)
-handle_words(test_3)
-handle_words(test_4)
-handle_words(test_5)
+# handle_words(test_1)
+# handle_words(test_2)
+# handle_words(test_3)
+# handle_words(test_4)
+# handle_words(test_5)
 
 # test_6 = ["abc"]
 # test_7 = ["a", "b", "c", "d", "e", "f"]
@@ -98,7 +108,8 @@ handle_words(test_5)
 # validate_words(test_7)
 # validate_words(test_8)
 
-# get_alpha()
+# alpha_options(test_1)
+
 
 
 
