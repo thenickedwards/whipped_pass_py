@@ -2,7 +2,7 @@ import random   # https://docs.python.org/3/library/random.html
 import time
 from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
 # for direct testing: 
-# from sub_dicts import  words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
+# from sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
 
 
 def get_alpha():
@@ -86,17 +86,17 @@ def alpha_options(_list):
 
 
 ##########     DRIVER CODE     ##########
-# test_1 = ["brush", "teeth"]
-# test_2 = ["Bert", "Ernie"]
-# test_3 = ["travel", "to", "France"]
-# test_4 = ["win", "a", "million"]
-# test_5 = ["you're", "awesome"]
+test_1 = ["brush", "teeth"]
+test_2 = ["Bert", "Ernie"]
+test_3 = ["travel", "to", "France"]
+test_4 = ["win", "a", "million"]
+test_5 = ["you're", "awesome"]
 
-# handle_words(test_1)
-# handle_words(test_2)
-# handle_words(test_3)
-# handle_words(test_4)
-# handle_words(test_5)
+handle_words(test_1)
+handle_words(test_2)
+handle_words(test_3)
+handle_words(test_4)
+handle_words(test_5)
 
 # test_6 = ["abc"]
 # test_7 = ["a", "b", "c", "d", "e", "f"]
