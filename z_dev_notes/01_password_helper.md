@@ -20,15 +20,15 @@ The second input from the user that will be used to create the base password wil
 
 ## Security Checks
 
-We will ensure the length of the base password is at least 8 characters long (and recommend 10) and that there are uppercase letters, lowercase letters, numbers, and special characters. If special chracters, or numbers are utilized in the alpha component, they will be maintained. The string will be checked to see if it is all uppercase or all lowercase. If mixed casing is already in place, this will also be maintained, though casing may change during randomization.
+We will ensure the length of the base password is at least 8 characters long (and recommend 10) and that there are uppercase letters, lowercase letters, numbers, and special characters. If special characters, or numbers are utilized in the alpha component, they will be maintained. The string will be checked to see if it is all uppercase or all lowercase. If mixed casing is already in place, this will also be maintained, though casing may change during randomization.
 
 ## Randomization for Security
 
-A random number of characters will be replaced in each component to make them more secure. At this stage we will ensure special characters are inserted and replace a few other letters or numbers with chracters that are "similar" from (e.g. A or a could be 4, I or i cold be 1, etc). This could be achieved by using a "Replacement Dictionary" which could have options for possible replacements as values for a given key. Like replacements could be stored in lists or possible tuples since they do not need to be mutable.
+A random number of characters will be replaced in each component to make them more secure. At this stage we will ensure special characters are inserted and replace a few other letters or numbers with characters that are "similar" from (e.g. A or a could be 4, I or i cold be 1, etc). This could be achieved by using a "Replacement Dictionary" which could have options for possible replacements as values for a given key. Like replacements could be stored in lists or possible tuples since they do not need to be mutable.
 
 ## Unique per Login
 
-Lastly the user will input a few options for chracters to pull from the login domain. For example this could be the first consonant, vowel, or letter and fix it at the beginning, end, or middle of the passwrod. They may choose up to four of these type of characters based on placement within the domain (i.e. first, second, penultimate, last).
+Lastly the user will input a few options for characters to pull from the login domain. For example this could be the first consonant, vowel, or letter and fix it at the beginning, end, or middle of the passwrod. They may choose up to four of these type of characters based on placement within the domain (i.e. first, second, penultimate, last).
 
 ## Examples and Usage
 

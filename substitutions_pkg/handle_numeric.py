@@ -4,15 +4,13 @@ from substitutions_pkg.sub_dicts import words_subs_dict, alpha_subs_dict, allowe
 
 
 def get_numbers():
-    numbers_input = ""
-    while numbers_input == "":
+    while True:
         print("Next, we'll get the numerical component.")
         print("I'm getting some work done to enhance this feature but for now simply enter the numbers (no symbols) separated by a space.")
         numbers_input = input("Give me a a few numbers (2-5 digits in total) that we can use for your password: ")
         _list = numbers_input.split()
         if validate_numbers(_list) == 0:
-            print("Let's try again!")
-            numbers_input =""
+            print("Let's try again!\n")
             continue
         if validate_numbers(_list) == 1:
             print("Looks good. Let me see what I can do with these.")
@@ -23,27 +21,27 @@ def get_numbers():
 
 def validate_numbers(_list):
      # if user input fails validation return 0, else 1
+     # remove commonly prohibited characters
+     for item in _list:
+          for char in item:
+               if char in commonly_prohibited_chars:
+                    print(f"I found the character '{char}' which is prohibited by most logins, so I'm just going to remove it.")
+                    new_word = item.replace(char, "")
+                    idx = _list.index(item)
+                    _list[idx] = item = new_word
      concat_nums = ''.join(_list)
-     # if not all numbers
-     if not re.match(r'\d{2,5}', concat_nums):
-          print("Are those numbers? Let's try aagain for 2-5 digits in total.")
-          return 0
      # if less than 2 or more than 5 digits
      if len(concat_nums) < 2:
           print("I need a bit more to work with to meet minimum character requirements for most logins.")
           return 0
      # if more than 5 words
      if len(concat_nums) > 5:
-          print("That's probably too many chracters for most logins.")
+          print("That's probably too many characters for most logins.")
           return 0
-     # remove commonly prohibited characters
-     for item in _list:
-          for char in item:
-               if char in commonly_prohibited_chars:
-                    print(f"I found {char} which is prohibited by most logins, so I'm just going to remove it.")
-                    new_word = item.replace(char, "")
-                    idx = _list.index(item)
-                    _list[idx] = item = new_word
+     # if not all characters are numbers
+     if not re.match(r'\d{2,5}', concat_nums):
+          print("Are those all numbers? Let's try aagain for 2-5 digits in total.")
+          return 0
      else:
           return 1
 

@@ -25,6 +25,31 @@ These characters are frequently prohibited due to parsing, encoding, or security
 4. **Special Brackets or Braces**: { } [ ]
 5. **Path and Command Symbols**: / |
 
+
+### Minimum Password Length
+Most systems require a minimum length of 8 characters as a baseline for security. This requirement is based on recommendations from organizations like NIST (National Institute of Standards and Technology) and other cybersecurity guidelines.
+
+**Why 8 Characters?**
+    - Shorter passwords are easier to brute-force.
+    - Eight characters provide enough combinations to significantly increase cracking difficulty compared to shorter passwords.
+    
+### Variations in Minimum Length:
+    - 4-6 Characters: Still found in older systems or low-security contexts but generally considered insecure.
+    - **12 Characters: Increasingly recommended for high-security applications (e.g., corporate systems, financial accounts).**
+
+Maximum Password Length
+Maximum password lengths are typically much larger and vary widely depending on the system:
+
+### Common Limits:
+    - 16-64 Characters: Most modern systems support passwords up to this range.
+    - 128-256 Characters: Found in security-focused systems, such as password managers and enterprise-grade applications
+
+Development: 
+    - Will require 8 characters minimum for alpha string. 
+    - Will set 12 as maximum characters for alpha string.
+    - Will require 2-4 sigits for numbers (resulting in 10-16 characers for base password). 
+    - Will require one variable for dynamic password creation (e.g. first, second, penultimate, last, letter, consonant, vowel, y-interpretation, number-interpretation). 
+    - Will reduce total characters to 15 (remove duplicates, reduce vowels, etc) if necessary. Max possible characters at this point will be 17.
 '''
 
 allowed_symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "?", ",", ".", ";", ":", "(", ")"]
