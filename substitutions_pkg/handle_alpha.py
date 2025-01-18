@@ -83,30 +83,24 @@ def get_alpha_options(_list):
     return options
 
 def get_alpha_approval(alpha_submission, alpha_component):
-    # alpha_approval = False
-    # while alpha_approval == False:
     while True:
         alpha_options = get_alpha_options(alpha_component)
         print(f"\nWe started with {alpha_submission}.")
         for i, opt in enumerate(alpha_options):
             print(f"{i+1}. The alphabetic string {alpha_submission} could become {opt}")
-        
+        # after gerenerating options, allow user to choose
         user_approval = input(f"\nWhich of the above would you like to use for your password?\nEnter 1, 2, 3, or 4. Or if would you rather send it through another series of randomized replacements hit enter: ")
         if user_approval == "1":
             alpha_component = alpha_options[0]
-            # alpha_approval = True
             return alpha_component
         elif user_approval == "2":
             alpha_component = alpha_options[1]
-            # alpha_approval = True
             return alpha_component
         elif user_approval == "3":
             alpha_component = alpha_options[2]
-            # alpha_approval = True
             return alpha_component
         elif user_approval == "4":
             alpha_component = alpha_options[4]
-            # alpha_approval = True
             return alpha_component
         else:
             alpha_component = alpha_submission
