@@ -31,6 +31,10 @@ alpha_subs_dict = {
     "z": ["Z", "2", "7_"]
 }
 
+vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+
+consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+
 numeric_subs_dict = {
     "0": ["O", "o", "()", "*", "@"],
     "1": ["I", "!", ".", "(", ")"],
@@ -71,10 +75,7 @@ words_subs_dict = {
     "with": ["w_"],
     "without": ["wo", "w_o"],
     "great": ["gr8"],
-    "laugh out loud": ["lol"],
     "by the way": ["btw"],
     "see you": ["cu"],
-    "talk to you later": ["ttyl"],
-    "got to go": ["gtg"],
-    "what's up": ["wazzup", "sup"]
+    "got to go": ["gtg"]
 }

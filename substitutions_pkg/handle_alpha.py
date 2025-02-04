@@ -1,18 +1,19 @@
 # to run file directly use module flag
 # python -m substitutions_pkg.handle_alpha
 import random   # https://docs.python.org/3/library/random.html
-import time
 import sys
 import os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from .sub_dicts import words_subs_dict, alpha_subs_dict, numeric_subs_dict, allowed_symbols, commonly_prohibited_chars
 
+from menus_main import typing_print
 
 
 def get_alpha():
     while True:
-        print("We'll start with the alphabetical component.")
-        print("Don't worry about adding symbols (or numbers just yet), I can do that for you. Though, if there's a symbol you want to make sure is part of the alphabetical component feel free to include it and I'll try to preserve them. You will have a chance to add numbers momentarily.")
+        typing_print("Let's  start with the alphabetical component.\n")
+        typing_print("Don't worry about adding symbols (or numbers just yet), I can do that for you. Though, if there's a symbol you want to make sure is part of the alphabetical component feel free to include it and I'll try to preserve them. You will have a chance to add numbers momentarily.\n")
         alpha_submission = input("Give me a couple of words that we can use for your password: ")
         _list = alpha_submission.split()
         if validate_words(_list) == 0:
@@ -26,7 +27,6 @@ def get_alpha():
 
 
 def validate_words(_list):
-    # if user input fails validation return 0, else 1
     # remove commonly prohibited characters
     for word in _list:
         for char in word:
@@ -43,6 +43,7 @@ def validate_words(_list):
     # if more than 12 characters
     if len(''.join(_list)) > 12:
         print("That's probably too many characters for most logins. Please enter a few words that are 8 - 12 characters.")
+    # if user input fails validation return 0, else 1
         return 0
     else:
         return 1
@@ -83,24 +84,16 @@ def get_alpha_options(_list):
     return options
 
 def get_alpha_approval(alpha_submission, alpha_component):
+    print("Now I'm going to make some replacements in the alphabetical string. Let me give you a few options to choose from...\n")
     while True:
         alpha_options = get_alpha_options(alpha_component)
-        print(f"\nWe started with {alpha_submission}.")
+        print(f"We started with {alpha_submission}.")
         for i, opt in enumerate(alpha_options):
             print(f"{i+1}. The alphabetic string {alpha_submission} could become {opt}")
         # after gerenerating options, allow user to choose
         user_approval = input(f"\nWhich of the above would you like to use for your password?\nEnter 1, 2, 3, or 4. Or if would you rather send it through another series of randomized replacements hit enter: ")
-        if user_approval == "1":
-            alpha_component = alpha_options[0]
-            return alpha_component
-        elif user_approval == "2":
-            alpha_component = alpha_options[1]
-            return alpha_component
-        elif user_approval == "3":
-            alpha_component = alpha_options[2]
-            return alpha_component
-        elif user_approval == "4":
-            alpha_component = alpha_options[4]
+        if user_approval in ["1", "2", "3", "4"]:
+            alpha_component = alpha_options[int(user_approval)-1]
             return alpha_component
         else:
             alpha_component = alpha_submission
