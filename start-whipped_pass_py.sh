@@ -2,9 +2,9 @@
 # Note: the commands to start below will source script in current shell (instead of executing in a subshell), 
 # this allows environment changes (like activating the virtual environment) to persist
 
-# >> source ./whipped_pass_py.sh start
+# >> source ./start-whipped_pass_py.sh start
 # OR      
-# >> . ./whipped_pass_py.sh start
+# >> . ./start-whipped_pass_py.sh start
     
 
 # Load environment variables
